@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Guess the Letter</title>
+</head>
+
+<body>
+<h1>Guess the Letter!</h1>
+    <div>
+        <p id="directions-text">Press any key to start playing!</p>
+        <p id="userchoice-text"></p>
+        <p id="computerchoice-text"></p>
+        <p id="wins-text"></p>
+        <p id="losses-text"></p>
+        <p id="guess-text"></p>
+        <p id="other-text"></p>
+    </div>
+
+    <script type="text/javascript">
+        var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+        var wins = 0;
+        var losses = 0;
+        var guessTally = 12;
+        var fullText = "Guesses: ";
+        var finaltally = 0;
+
+        var directionsText = document.getElementById("directions-text");
+        var userChoiceText = document.getElementById("userchoice-text");
+        var computerChoiceText = document.getElementById("computerchoice-text");
+        var winsText = document.getElementById("wins-text");
+        var lossesText = document.getElementById("losses-text");
+        var guessesText = document.getElementById("guess-text");
+        var otherText = document.getElementById("other-text");
+
+        document.onkeyup = function (event) {
+            fullText = fullText + event.key;
+            otherText.innerHTML = fullText + " ";
+
+            var userGuess = event.key;
+
+            var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+// Game start
+//          //GUESSES
+            // Take the letter, and provide 12 tries.
+            // Keep letter for guesses > 0.
+            // If guess is false, and guesses is greater than 0, subtract 1 guess,
+
+            // When Guess is done, search if LOSS condition are true
+
+            // LOSSES
+            // if guess is less than 0, add 1 loss
+            // When loss +1, trigger Soft reset game with new letter, don't modify wins and losses, and add 12 guesses.
+            // 
+
+            // If Loss parameters is false, activate WIN condition
+
+            // WIN
+                // If guess is true, trigger add 1 win
+                // When +1 win, trigger Soft reset game with new letter and add 12 guesses
+                
+            if ((userGuess === computerGuess && guessTally < 0))
+            document.getElementById("userchoice-text").innerHTML; {
+                if ((userGuess === computerGuess)) {
+                    wins++;
+                } else if (userGuess !== computerGuess) {
+                    guessTally--;
+                } else (guessTally == 12); {
+                    losses++;
+                    }
+            }
+
+
+// if (userGuess !== computerGuess) {
+//     guessTally
+// }
+                directionsText.textContent = "";
+                userChoiceText.textContent = "You chose: " + userGuess;
+                computerChoiceText.textContent = "The letter was: " + computerGuess;
+                winsText.textContent = "Wins: " + wins;
+                lossesText.textContent = "Losses: " + losses;
+                guessesText.textContent = "Guesses left: " + guessTally;
+        };
+    </script>
+
+</body>
+
+</html>
